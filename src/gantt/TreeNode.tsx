@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect } from 'react'
+
 import { Task } from './Task'
 import { GanttContext } from './GanttContext'
-import { ActionType } from './GanttAction'
+import { TaskAction } from './GanttAction'
 
 export const TreeNode = ({ task, indentLevel = 0 }: {
     task: Task
@@ -21,10 +22,9 @@ export const TreeNode = ({ task, indentLevel = 0 }: {
         border: '1px solid black',
     }
 
-
     return <>
         <tr key={task.id}>
-            <td style={style} onClick={() => dispatch({ type: ActionType.SetSelectedTask, data: task })}>{task.text}{selectedTxt}</td>
+            <td style={style} onClick={() => dispatch({ type: TaskAction.Select, data: task })}>{task.text}{selectedTxt}</td>
         </tr>
         {children}
     </>
