@@ -12,7 +12,7 @@ export const TreeNode = ({ task, indentLevel = 0 }: {
     const [ selectedTxt, setSelectedTxt ] = useState('')
     useEffect(
         () => setSelectedTxt(state.selectedTaskId === task.id ? ' (selected)' : ''
-    ), [ state.selectedTaskId ])
+    ), [ state.selectedTaskId, task.id ])
 
     const children = task.children.map(child => (
         <TreeNode key={child.id} task={child} indentLevel={indentLevel + 1} />
